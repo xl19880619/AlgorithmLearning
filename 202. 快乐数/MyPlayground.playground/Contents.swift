@@ -27,13 +27,9 @@ import UIKit
 */
 
 func isHappy(_ n: Int) -> Bool {
-    var fast: Int = n
-    var slow: Int = n
-    fast = quartSum(quartSum(fast))
-    slow = quartSum(slow)
-//    print("fast \(fast) slow \(slow)")
+    var fast = quartSum(quartSum(n))
+    var slow = quartSum(n)
     while fast != slow {
-//        print("fast \(fast) slow \(slow)")
         fast = quartSum(quartSum(fast))
         slow = quartSum(slow)
     }
@@ -46,16 +42,13 @@ func isHappy(_ n: Int) -> Bool {
 func quartSum(_ n: Int) -> Int {
     var sum = 0
     var value = n
-    
     while value != 0 {
-        let v = value % 10;
-//        print("value \(value)")
-        sum = sum + v * v
+        let n = value % 10
+        sum = sum + n * n
         value = value/10
-//        print("sum \(sum) value \(value)")
     }
-    return sum
+    return Int(sum)
 }
 
-isHappy(19)
+isHappy(2)
 
